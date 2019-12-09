@@ -7,11 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title', 'user_id', 'caption' , 'image'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    //
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

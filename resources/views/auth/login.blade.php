@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -62,6 +62,15 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+                                <div class="container pt-3">
+                                    <div class="row">
+                                        <div class="col-md-12 row-block"> Or sign in using
+                                            <a href="{{ url('/auth/redirect/github') }}" class="btn btn-dark">Github</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </form>
@@ -70,4 +79,5 @@
         </div>
     </div>
 </div>
+
 @endsection
