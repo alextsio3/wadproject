@@ -2,9 +2,10 @@
 
 @section('content')
 
+    <h1 class="text-center pt-5">User list</h1>
     @foreach($users as $user)
 
-        <div class="py-5" id="app">
+        <div class="pt-5" id="app">
         <div class="col-xs-12" style="height:40px;">
         <div class="card mx-auto"  style="width:600px">
             <h5 class="card-title mt-2 ml-3 d-flex ">
@@ -25,7 +26,7 @@
 
     @endforeach
             <div class="col-xs-12" style="height:40px;"></div>
-            <div class="mx-auto"  style="width:150px">
+            <div class="mx-auto py-3"  style="width:150px">
                 <h5>{{ $users->links() }}</h5>
             </div>
 

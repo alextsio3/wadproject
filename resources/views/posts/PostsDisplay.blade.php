@@ -15,12 +15,12 @@
                         </a>
                         <h6 class="mr-2" style="position: absolute; right: 0;">Views : {{ $post->views }}</h6>
                         <div>
-                            |<a href="/post/{{ $post->id }}" class="text-justify ml-1">View Post </a>
+                            |<a type="button" href="/post/{{ $post->id }}" class="text-justify ml-1">View Post </a>
                             @can('update', $post->user->profile)
                                 |<a href="{{route('post.edit', [$post->id])}}" class="edit text-success ml-1">Edit Post </a>|
                             @endcan
                             @can('update', $post->user->profile)
-                                    <a class="text-danger" data-toggle="modal" data-target="#modalConfirmDelete">Delete</a>
+                                    <a type="button" class="text-danger" data-toggle="modal" data-target="#modalConfirmDelete">Delete</a>
                             @endcan
 
                         </div>

@@ -11,9 +11,9 @@
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center">
                     <h1>{{ $user->Username }}</h1>
-
+                    @cannot('update', $user->profile)
                     <link-button user-id="{{ $user->id }}" connected="{{ $connected }}"></link-button>
-
+                    @endcannot
                 </div>
 
             </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
             <div> {{$user->profile->description}} </div>
-            <div class="font-weight-bold pb-5" ><a href="">{{$user->profile->url}}</a></div>
+            <div class="font-weight-bold pb-5" ><a href="{{$user->profile->url}}">{{$user->profile->url}}</a></div>
 
         </div>
     </div>

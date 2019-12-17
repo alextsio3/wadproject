@@ -63,14 +63,14 @@
                                     </a>
                                 @endif
 
-                                <div class="container pt-3">
-                                    <div class="row">
-                                        <div class="col-md-12 row-block"> Or sign in using
-                                            <a href="{{ url('/auth/redirect/github') }}" class="btn btn-dark">Github</a>
-                                        </div>
-                                    </div>
-                                </div>
 
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0 pt-2">
+                            <div class="d-flex col-md-8 offset-md-4">
+                                <a href="{{ url('/auth/redirect/github') }}" class="btn btn-dark">Github</a>
+                                <div class="d-flex pt-2 pl-2">Login using your Github account</div>
                             </div>
                         </div>
                     </form>
@@ -79,5 +79,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

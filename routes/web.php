@@ -47,6 +47,18 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 
 Route::get('users', 'UsersController@index')->name('users.display');
 
+Route::get('posts/{post}/comments', 'CommentController@index');
+
+Route::post('posts/{post}/comment', 'CommentController@store');
+
+Route::delete('/posts/comment/delete/{comment}', 'CommentController@destroy');
+
+Route::put('/posts/comment/edit/{comment}', 'CommentController@update')->name('comment.update');
+
+
+
+
+
 
 
 

@@ -35,7 +35,6 @@ class SocialController extends Controller
                 'name'     => $getInfo->name,
                 'Username' => $getInfo->name,
                 'email'    => $getInfo->email,
-                'api_token' => Str::random(60),
                 'provider' => $provider,
                 'provider_id' => $getInfo->id
             ]);
