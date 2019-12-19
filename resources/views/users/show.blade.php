@@ -10,7 +10,7 @@
         <div class="card mx-auto"  style="width:600px">
             <h5 class="card-title mt-2 ml-3 d-flex ">
                 <a href="/profile/{{ $user->id }}">
-                    <img src="/storage/{{ $user->profile->image }}" style="width:35px;" class="rounded mt-2 mr-2" alt=" ">
+                    <img src="{{ $user->profile->profileImage() }}" style="width:35px;" class="rounded mt-2 mr-2" alt=" ">
                 </a>
                 <a href="/profile/{{ $user->id }}">
                     <div class="mt-3">
@@ -18,7 +18,9 @@
                     </div>
                 </a>
                 <div class="pt-2">
-                <link-button user-id="{{ $user->id }}" connected="{{ $connected }}"></link-button>
+                    @cannot('update', $user->profile)
+                    <link-button user-id="{{ $user->id }}" connected="{{ $connected }}"></link-button>
+                    @endcannot
                 </div>
             </h5>
         </div>

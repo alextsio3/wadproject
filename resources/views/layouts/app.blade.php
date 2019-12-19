@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MyWebSite') }}</title>
 
 
     <!-- Fonts -->
@@ -22,8 +22,6 @@
 
     <div >
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
-            <a href="/" class="navbar-brand pl-5">Home</a>
-
 
             @guest
                 <div class="navbar-collapse collapse justify-content-stretch" id="navbar">
@@ -40,11 +38,14 @@
                         </li>
                     </ul>
                 @endif
-            @else
+            @elseif(auth()->user()->is_admin == '')
+                <li class="nav-item d-flex mr-auto">
+                <a href="/" class="navbar-brand pl-5">Home</a>
+                </li>
                 <li class="nav-item d-flex ml-auto">
                     <div class="" >
                         <a href="/profile/{{ auth()->user()->id }}">
-                            <img src="/storage/{{ auth()->user()->profile->image }}" style="width:30px;" class="rounded-circle mt-1 mr-2" alt=" ">
+                            <img src="{{ auth()->user()->profile->profileImage() }}" style="width:30px;" class="rounded-circle mt-1 mr-2" alt=" ">
                         </a>
                     </div>
                     <div class="navbar-collapse collapse justify-content-stretch" id="navbar">
@@ -72,6 +73,43 @@
 
                     </div>
                 </li>
+            @else
+                <li class="nav-item d-flex mr-auto">
+                    <a href="/" class="navbar-brand pl-5">Home</a>
+                    <a class="nav-link text-dark" href="{{ route('user.list') }}">User List</a>
+                    <a class="nav-link text-dark" href="{{ route('post.list') }}">Post List</a>
+                    <a class="nav-link text-dark" href="{{ route('comment.list') }}">Comment List</a>
+                </li>
+                <li class="nav-item d-flex ml-auto">
+                    <div class="" >
+                        <a href="/profile/{{ auth()->user()->id }}">
+                            <img src="{{ auth()->user()->profile->profileImage() }}" style="width:30px;" class="rounded-circle mt-1 mr-2" alt=" ">
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse justify-content-stretch" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/profile/{{ auth()->user()->id }}/edit">Edit profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbar-collapse collapse justify-content-stretch">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}</a>
+                            </li>
+                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                    </div>
+                </li>
+
+
             @endguest
 
         </nav>
@@ -80,6 +118,7 @@
             @yield('content')
             <!-- Scripts -->
                 <script src="{{ asset('js/app.js') }}"></script>
+
                 @yield('scripts')
 
         </main>

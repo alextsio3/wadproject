@@ -5,7 +5,7 @@
 <div class="container" id="app">
     <div class="row">
         <div class="col-3 p-5">
-            <img src="/storage/{{ $user->profile->image }}" class="rounded w-100" alt="no profile image ">
+            <img src="{{ $user->profile->profileImage() }}" class="rounded w-100" alt="no profile image ">
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">

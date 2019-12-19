@@ -21,6 +21,7 @@
                            type="text"
                            class="form-control @error('title') is-invalid @enderror"
                            name="title"
+                           minlength="3"
                            value="{{ old('title') ?? $user->profile->title }}"
                            autocomplete="title" autofocus>
 

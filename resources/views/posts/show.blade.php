@@ -5,12 +5,12 @@
         <div class="card mx-auto"  style="width:600px">
             <h5 class="card-title mt-2 ml-3 d-flex ">
                 <a href="/profile/{{ $post->user->id }}">
-                    <img src="/storage/{{ $post->user->profile->image }}" style="width:40px;" class="rounded mt-2 mr-2" alt=" ">
+                    <img src="{{ $post->user->profile->profileImage() }}" style="width:40px;" class="rounded mt-2 mr-2" alt=" ">
                 </a>
                 <div class="mt-3">
                     <div class="d-flex float-right">
                         <a href="/profile/{{ $post->user->id }}">
-                            <span class="text-dark mr-1"> {{ $post->user->Username }}</span>
+                            <strong class="text-dark mr-1"> {{ $post->user->Username }}</span>
                         </a>
                         <h6 class="mr-2" style="position: absolute; right: 0;">Views : {{ $post->views }}</h6>
                     </div>
@@ -24,7 +24,6 @@
             </div>
             @include('comments.CommentCreate')
             @include('comments.commentsDisplay')
-
             @include('comments.CommentAjaxScript')
 
 

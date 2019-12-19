@@ -5,7 +5,7 @@
         <div class="card mx-auto"  style="width:600px">
             <h5 class="card-title mt-2 ml-3 d-flex ">
                 <a href="/profile/{{ $post->user->id }}">
-                    <img src="/storage/{{ $post->user->profile->image }}" style="width:40px;" class="rounded mt-2 mr-2" alt=" ">
+                    <img src="{{ $post->user->profile->profileImage() }}" style="width:40px;" class="rounded mt-2 mr-2" alt=" ">
                 </a>
 
                 <div class="mt-3">

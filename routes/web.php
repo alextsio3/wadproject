@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/admin', 'AdminController@admin')->middleware('admin')->name('user.list');
+
+Route::get('/admin/posts', 'AdminController@adminposts')->middleware('admin')->name('post.list');
+
+Route::get('/admin/comments', 'AdminController@admincomments')->middleware('admin')->name('comment.list');
+
+Route::delete('admin/destroyuser/{user}', 'AdminController@destroyUser')->middleware('admin');
+
+Route::delete('/destroypost/{post}', 'AdminController@destroyPost')->middleware('admin');
+
+Route::delete('/destroycomment/{comment}', 'AdminController@destroyComment')->middleware('admin');
+
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 
 Route::get('/', 'PostsController@index');

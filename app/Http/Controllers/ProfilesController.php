@@ -11,7 +11,12 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ProfilesController extends Controller
 {
 
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index(User $user)
     {
         $connected = (auth()->user()) ? auth()->user()->links->contains($user->id): false;

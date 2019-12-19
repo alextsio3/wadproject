@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('provider')->nullable();  /*Used in order to login with an external api ex. google*/
             $table->string('provider_id')->nullable(); /* Used in order to login with an external api ex. google*/
             $table->rememberToken();
+            $table->boolean('is_admin')->nullable();
             $table->timestamps();
         });
     }

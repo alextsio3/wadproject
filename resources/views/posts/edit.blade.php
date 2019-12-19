@@ -19,6 +19,7 @@
 
                     <input id="title"
                            type="text"
+                           minlength="5"
                            class="form-control @error('title') is-invalid @enderror"
                            name="title"
                            value="{{ old('title') ?? $post->title }}"

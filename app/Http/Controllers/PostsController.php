@@ -29,7 +29,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'title' => 'required',
+            'title' => 'string | required',
             'caption' => 'required',
             'image' => [ 'image'],
         ]);
@@ -87,7 +87,7 @@ class PostsController extends Controller
 
         $this->authorize('update', $post );
         $data = request()->validate([
-            'title' => 'required',
+            'title' => 'string | required',
             'caption' => 'required',
             'image' => 'nullable|image',
         ]);

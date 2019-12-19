@@ -18,6 +18,11 @@ return [
         'passwords' => 'users',
     ],
 
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -46,6 +51,8 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+
     ],
 
     /*

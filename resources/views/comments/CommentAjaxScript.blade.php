@@ -1,5 +1,6 @@
 @section('scripts')
-    <script type="text/javascript">
+
+    <script>
 
         const AjaxComments = new Vue({
             el: '#AjaxComments',
@@ -38,25 +39,34 @@
                 deleteComment($comment_id) {
                     axios.delete('/posts/comment/delete/'+$comment_id, {
                     })
+
                         .then(() => {
-                            this.comments.splice(this.commentIndex($comment_id),1);
+                            if(confirm("Are You sure want to delete this comment?")){
+                                this.comments.splice(this.commentIndex($comment_id), 1);
+                            }
                         })
-                        .catch((error) => {
-                            console.log(error);
-                        })
+                            .catch((error) => {
+                                if(alert("You can only delete your own comments")) {
+                                    console.log(error);
+                                }
+                            })
+
                 },
 
                 updateComment($comment_id) {
                     axios.put('/posts/comment/edit/'+$comment_id, {
-                        body: this.commentBox
+                        body: this.commentbody
                     })
 
                         .then(({data}) => {
                             this.comments[this.commentIndex($comment_id)].body = data.body;
-                            this.commentBox = '';
+                            this.commentbody = '';
                         })
                         .catch((error) => {
-                            console.log(error);
+                            if(alert("You can only edit your own comments")) {
+                                console.log(error);
+
+                            }
                         })
                 },
                 commentIndex(commentId) {
@@ -71,11 +81,4 @@
 
     </script>
 
-
-    <script>
-        function input(){
-            var text = "here the text that you want to input.";
-            document.forms.form1.area.value = text;
-        }
-    </script>
 @endsection

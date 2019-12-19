@@ -46,9 +46,9 @@ class CommentController extends Controller
         $data = $request->validate([
             'body' => 'required|string'
         ]);
-        $comment->body = $data['body'];
+            $comment->body = $data['body'];
 
-        $comment->save();
+            $comment->save();
 
         return response($comment, 200);
     }
